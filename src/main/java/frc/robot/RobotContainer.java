@@ -15,16 +15,16 @@ import frc.robot.Constants.FrontRight;
 import frc.robot.subsystem.ShuffleboardUI;
 import frc.robot.subsystem.swerve.ModuleName;
 import frc.robot.subsystem.swerve.Swerve;
-import frc.robot.subsystem.swerve.SwerveModule;
+import frc.robot.subsystem.swerve.RealSwerveModule;
 
 public class RobotContainer {
   public RobotContainer() {
     new ShuffleboardUI(
       new Swerve(List.of(
-        new SwerveModule(ModuleName.FRONT_RIGHT, FrontRight.CANCODER_ID, FrontRight.DRIVE_MOTOR_ID, FrontRight.STEER_MOTOR_ID),
-        new SwerveModule(ModuleName.FRONT_LEFT, FrontLeft.CANCODER_ID, FrontLeft.DRIVE_MOTOR_ID, FrontLeft.STEER_MOTOR_ID),
-        new SwerveModule(ModuleName.BACK_RIGHT, BackRight.CANCODER_ID, BackRight.DRIVE_MOTOR_ID, BackRight.STEER_MOTOR_ID),
-        new SwerveModule(ModuleName.BACK_LEFT, BackLeft.CANCODER_ID, BackLeft.DRIVE_MOTOR_ID, BackLeft.STEER_MOTOR_ID)
+        new RealSwerveModule(ModuleName.FRONT_RIGHT, FrontRight.CANCODER_ID, FrontRight.DRIVE_MOTOR_ID, FrontRight.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.FRONT_LEFT, FrontLeft.CANCODER_ID, FrontLeft.DRIVE_MOTOR_ID, FrontLeft.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.BACK_RIGHT, BackRight.CANCODER_ID, BackRight.DRIVE_MOTOR_ID, BackRight.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.BACK_LEFT, BackLeft.CANCODER_ID, BackLeft.DRIVE_MOTOR_ID, BackLeft.STEER_MOTOR_ID)
       ))
     );
   }

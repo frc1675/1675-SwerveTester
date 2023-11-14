@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystem.swerve.SwerveModule.SwerveModuleState;
 
 public class Swerve extends SubsystemBase{
 
-    private HashMap<ModuleName, SwerveModule> modules = new HashMap<ModuleName, SwerveModule>();
+    private HashMap<ModuleName, AbstractSwerveModule> modules = new HashMap<ModuleName, AbstractSwerveModule>();
 
 
-    public Swerve(List<SwerveModule> moduleList) {
-        for (SwerveModule m : moduleList) {
+    public Swerve(List<RealSwerveModule> moduleList) {
+        for (RealSwerveModule m : moduleList) {
             modules.put(m.getName(), m);
         }
+        modules.put(ModuleName.ALL, new VirtualSwerveModule(moduleList));
     }
 
     public SwerveModuleState getModuleState(ModuleName module) {

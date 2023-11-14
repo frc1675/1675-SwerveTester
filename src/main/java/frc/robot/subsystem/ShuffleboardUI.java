@@ -20,7 +20,7 @@ import frc.robot.commands.RotateNTimes;
 import frc.robot.commands.SteerTest;
 import frc.robot.subsystem.swerve.ModuleName;
 import frc.robot.subsystem.swerve.Swerve;
-import frc.robot.subsystem.swerve.SwerveModule.SwerveModuleState;
+import frc.robot.subsystem.swerve.SwerveModuleState;
 
 public class ShuffleboardUI extends SubsystemBase{
     private AbstractTest cmd;
