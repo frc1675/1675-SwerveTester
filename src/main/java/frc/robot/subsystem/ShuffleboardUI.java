@@ -16,6 +16,7 @@ import frc.robot.Robot;
 import frc.robot.commands.AbstractTest;
 import frc.robot.commands.DriveTest;
 import frc.robot.commands.Rotate360;
+import frc.robot.commands.RotateNTimes;
 import frc.robot.commands.SteerTest;
 import frc.robot.subsystem.swerve.ModuleName;
 import frc.robot.subsystem.swerve.Swerve;
@@ -52,6 +53,7 @@ public class ShuffleboardUI extends SubsystemBase{
             testChooser.setDefaultOption("Drive motor", () -> new DriveTest(swerve, () -> moduleChooser.getSelected()));
             testChooser.addOption("Steer motor", () -> new SteerTest(swerve, () -> moduleChooser.getSelected()));
             testChooser.addOption("Rotate 360 degrees", () -> new Rotate360(swerve, () -> moduleChooser.getSelected()));
+            testChooser.addOption("Rotate 3 times", () -> new RotateNTimes(swerve, () -> moduleChooser.getSelected(), 3));
             
         }
 
