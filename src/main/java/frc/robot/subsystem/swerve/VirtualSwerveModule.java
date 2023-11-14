@@ -47,10 +47,13 @@ public class VirtualSwerveModule extends AbstractSwerveModule{
 
     @Override
     public boolean setSteerDesiredAngle(double angleDeg) {
+        boolean rtn = true;
         for (RealSwerveModule m : realModules) {
-            m.setSteerDesiredAngle(angleDeg);   
+            if(!m.setSteerDesiredAngle(angleDeg)) {
+                rtn = false;
+            }
         }
-        return false;
+        return rtn;
     }
 
     private double getAverageDriveSpeed() {
