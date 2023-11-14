@@ -25,7 +25,7 @@ public class SwerveModule {
         drive = new CANSparkMax(driveID, MotorType.kBrushless);
         steer = new CANSparkMax(steerID, MotorType.kBrushless);
 
-        pid = new PIDController(0, 0, 0);
+        pid = new PIDController(Constants.SWERVE_P, Constants.SWERVE_I, Constants.SWERVE_D);
 
         toStr = String.format("[D, S, CC] : [%d, %d, %d]", driveID, steerID, coderID);
     }
@@ -49,6 +49,9 @@ public class SwerveModule {
     }
 
     /**
+     * Set the speed of the steer motor based on the PID controller in order to
+     * rotate to the given angle. Method should be called continously until the
+     * angle is reached.
      * 
      * @param angleDeg The desired angle in degrees.
      * @return true if the module is within the tolerance, false otherwise
@@ -59,6 +62,7 @@ public class SwerveModule {
         if(angleDif >= Constants.STEER_ANGLE_TOLERANCE){
             steer.set(pid.calculate(angleDif));
         }else {
+            steer.set(0);
             return true;
         }
         return false;

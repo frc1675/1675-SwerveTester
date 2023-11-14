@@ -7,6 +7,11 @@ public class Constants {
     public static final double TEST_SPEED = 0.5;
     public static final double STEER_ANGLE_TOLERANCE = 1;
 
+    //TODO tune constants
+    public static final double SWERVE_P = 0;
+    public static final double SWERVE_I = 0;
+    public static final double SWERVE_D = 0;
+
     //TODO correct IDs!
     public class FrontRight {
         private FrontRight(){}
