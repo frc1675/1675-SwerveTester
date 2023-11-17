@@ -15,7 +15,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
     private final CANSparkMax drive;
     private final CANSparkMax steer;
 
-    private final PIDController pid;
+    private static final PIDController pid = new PIDController(Constants.SWERVE_P, Constants.SWERVE_I, Constants.SWERVE_D);;
 
     private final String toStr;
 
@@ -25,9 +25,11 @@ public class RealSwerveModule extends AbstractSwerveModule{
         drive = new CANSparkMax(driveID, MotorType.kBrushless);
         steer = new CANSparkMax(steerID, MotorType.kBrushless);
 
-        pid = new PIDController(Constants.SWERVE_P, Constants.SWERVE_I, Constants.SWERVE_D);
-
         toStr = String.format("[D, S, CC] : [%d, %d, %d]", driveID, steerID, coderID);
+    }
+
+    public static PIDController getPIDController() {
+        return pid;
     }
 
     @Override
@@ -49,7 +51,8 @@ public class RealSwerveModule extends AbstractSwerveModule{
 
     @Override
     public double getCanCoderAbsolutePosition() {
-        return cancoder.getAbsolutePosition();
+        return 45;
+        //return cancoder.getAbsolutePosition();
     }
 
     /**

@@ -20,6 +20,7 @@ import frc.robot.commands.RotateNTimes;
 import frc.robot.commands.RotateToZero;
 import frc.robot.commands.SteerTest;
 import frc.robot.subsystem.swerve.ModuleName;
+import frc.robot.subsystem.swerve.RealSwerveModule;
 import frc.robot.subsystem.swerve.Swerve;
 import frc.robot.subsystem.swerve.SwerveModuleState;
 
@@ -83,9 +84,14 @@ public class ShuffleboardUI extends SubsystemBase{
             moduleState.addDouble("Steer Speed", () -> currState.steerSpeed).withWidget(BuiltInWidgets.kGraph);
             moduleState.addDouble("CANCoder Position (Degrees)", () -> currState.CANCoderPosition).withWidget(BuiltInWidgets.kGraph);
 
-            ShuffleboardLayout moduleCurrentState = tab.getLayout("Current Value", BuiltInLayouts.kList).withPosition(9, 0).withSize(1, 2);
+            ShuffleboardLayout moduleCurrentState = tab.getLayout("Current Value", BuiltInLayouts.kList).withPosition(2, 3).withSize(2, 2);
             moduleCurrentState.addDouble("Steer Speed", ()-> currState.steerSpeed);
             moduleCurrentState.addDouble("CANCoder Position (Degrees)", ()-> currState.CANCoderPosition);
+        }
+
+        //PID tuner
+        {
+            tab.add("Swerve PID", RealSwerveModule.getPIDController()).withWidget(BuiltInWidgets.kPIDController).withPosition(0, 3).withSize(2, 2);
         }
         
     }

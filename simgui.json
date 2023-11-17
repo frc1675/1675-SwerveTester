@@ -12,6 +12,7 @@
     "types": {
       "/FMSInfo": "FMSInfo",
       "/Shuffleboard/Swerve Tester/Modules": "String Chooser",
+      "/Shuffleboard/Swerve Tester/Swerve PID": "PIDController",
       "/Shuffleboard/Swerve Tester/Test Routines": "String Chooser",
       "/SmartDashboard/Scheduler": "Scheduler"
     }
