@@ -78,10 +78,14 @@ public class ShuffleboardUI extends SubsystemBase{
         
         //Module state
         {
-            ShuffleboardLayout moduleState = tab.getLayout("Module State", BuiltInLayouts.kList).withPosition(4, 0).withSize(5, 5);
+            ShuffleboardLayout moduleState = tab.getLayout("Module State", BuiltInLayouts.kList).withPosition(4, 0).withSize(5, 6);
             moduleState.addDouble("Drive Speed", () -> 100 * currState.driveSpeed).withWidget(BuiltInWidgets.kDial);
             moduleState.addDouble("Steer Speed", () -> currState.steerSpeed).withWidget(BuiltInWidgets.kGraph);
             moduleState.addDouble("CANCoder Position (Degrees)", () -> currState.CANCoderPosition).withWidget(BuiltInWidgets.kGraph);
+
+            ShuffleboardLayout moduleCurrentState = tab.getLayout("Current Value", BuiltInLayouts.kList).withPosition(9, 0).withSize(1, 2);
+            moduleCurrentState.addDouble("Steer Speed", ()-> currState.steerSpeed);
+            moduleCurrentState.addDouble("CANCoder Position (Degrees)", ()-> currState.CANCoderPosition);
         }
         
     }
