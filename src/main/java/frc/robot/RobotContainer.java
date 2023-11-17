@@ -8,10 +8,10 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import frc.robot.Constants.BackLeft;
-import frc.robot.Constants.BackRight;
-import frc.robot.Constants.FrontLeft;
-import frc.robot.Constants.FrontRight;
+import frc.robot.Constants.ModuleFour;
+import frc.robot.Constants.ModuleThree;
+import frc.robot.Constants.ModuleTwo;
+import frc.robot.Constants.ModuleOne;
 import frc.robot.subsystem.ShuffleboardUI;
 import frc.robot.subsystem.swerve.ModuleName;
 import frc.robot.subsystem.swerve.Swerve;
@@ -21,10 +21,10 @@ public class RobotContainer {
   public RobotContainer() {
     new ShuffleboardUI(
       new Swerve(List.of(
-        new RealSwerveModule(ModuleName.FRONT_RIGHT, FrontRight.CANCODER_ID, FrontRight.DRIVE_MOTOR_ID, FrontRight.STEER_MOTOR_ID),
-        new RealSwerveModule(ModuleName.FRONT_LEFT, FrontLeft.CANCODER_ID, FrontLeft.DRIVE_MOTOR_ID, FrontLeft.STEER_MOTOR_ID),
-        new RealSwerveModule(ModuleName.BACK_RIGHT, BackRight.CANCODER_ID, BackRight.DRIVE_MOTOR_ID, BackRight.STEER_MOTOR_ID),
-        new RealSwerveModule(ModuleName.BACK_LEFT, BackLeft.CANCODER_ID, BackLeft.DRIVE_MOTOR_ID, BackLeft.STEER_MOTOR_ID)
+        new RealSwerveModule(ModuleName.MODULE_ONE, ModuleOne.CANCODER_ID, ModuleOne.DRIVE_MOTOR_ID, ModuleOne.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.MODULE_TWO, ModuleTwo.CANCODER_ID, ModuleTwo.DRIVE_MOTOR_ID, ModuleTwo.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.MODULE_THREE, ModuleThree.CANCODER_ID, ModuleThree.DRIVE_MOTOR_ID, ModuleThree.STEER_MOTOR_ID),
+        new RealSwerveModule(ModuleName.MODULE_FOUR, ModuleFour.CANCODER_ID, ModuleFour.DRIVE_MOTOR_ID, ModuleFour.STEER_MOTOR_ID)
       ))
     );
   }

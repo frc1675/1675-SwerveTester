@@ -1,10 +1,10 @@
 package frc.robot.subsystem.swerve;
 
 public enum ModuleName {
-    FRONT_RIGHT("Front Right"),
-    FRONT_LEFT("Front Left"),
-    BACK_RIGHT("Back Right"),
-    BACK_LEFT("Back Left"),
+    MODULE_ONE("Module One"),
+    MODULE_TWO("Module Two"),
+    MODULE_THREE("Module Three"),
+    MODULE_FOUR("Module Four"),
     ALL("All Modules");
 
     public final String name;

@@ -44,7 +44,7 @@ public class ShuffleboardUI extends SubsystemBase{
             for (ModuleName m : ModuleName.values()) {
                 moduleChooser.addOption(m.name, m);
             }
-            moduleChooser.setDefaultOption(ModuleName.FRONT_RIGHT.name, ModuleName.FRONT_RIGHT);
+            moduleChooser.setDefaultOption(ModuleName.MODULE_ONE.name, ModuleName.MODULE_ONE);
             tab.add("Modules", moduleChooser).withPosition(0, 0).withSize(2, 1);
         }
 
