@@ -51,8 +51,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
 
     @Override
     public double getCanCoderAbsolutePosition() {
-        return 45;
-        //return cancoder.getAbsolutePosition();
+        return cancoder.getAbsolutePosition();
     }
 
     /**
@@ -65,6 +64,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
      */
     @Override
     public boolean setSteerDesiredAngle(double angleDeg) {
+        angleDeg = normalizeInput(angleDeg);
         double angleDif = angleDeg - cancoder.getAbsolutePosition();
 
         if(angleDif >= Constants.STEER_ANGLE_TOLERANCE){
@@ -74,6 +74,16 @@ public class RealSwerveModule extends AbstractSwerveModule{
             return true;
         }
         return false;
+    }
+
+    private double normalizeInput(double degrees) {
+        if(degrees > 360) {
+            return normalizeInput(degrees - 360);
+        }
+        if(degrees < 0) {
+            return normalizeInput(degrees + 360);
+        }
+        return degrees;
     }
 
     /**
