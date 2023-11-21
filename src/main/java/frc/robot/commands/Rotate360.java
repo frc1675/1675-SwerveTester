@@ -12,12 +12,12 @@ public class Rotate360 extends AbstractTest {
 
   public Rotate360(Swerve swerve, Supplier<ModuleName> name) {
     super(swerve, name);
-
-    startAngle = swerve.getModuleState(name.get()).CANCoderPosition;
   }
 
   @Override
-  public void initialize() {}
+  public void initialize() {
+    startAngle = swerve.getModuleState(name).CANCoderPosition;
+  }
 
   @Override
   public void execute() {

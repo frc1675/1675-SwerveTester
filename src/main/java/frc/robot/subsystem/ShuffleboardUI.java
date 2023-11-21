@@ -1,5 +1,6 @@
 package frc.robot.subsystem;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
 import edu.wpi.first.networktables.GenericEntry;
@@ -81,8 +82,8 @@ public class ShuffleboardUI extends SubsystemBase{
         {
             ShuffleboardLayout moduleState = tab.getLayout("Module State", BuiltInLayouts.kList).withPosition(4, 0).withSize(5, 6);
             moduleState.addDouble("Drive Speed", () -> 100 * currState.driveSpeed).withWidget(BuiltInWidgets.kDial);
-            moduleState.addDouble("Steer Speed", () -> currState.steerSpeed).withWidget(BuiltInWidgets.kGraph);
-            moduleState.addDouble("CANCoder Position (Degrees)", () -> currState.CANCoderPosition).withWidget(BuiltInWidgets.kGraph);
+            moduleState.addDouble("Steer Speed", () -> currState.steerSpeed).withWidget(BuiltInWidgets.kGraph).withProperties(Map.of("Visible Time", 10));
+            moduleState.addDouble("CANCoder Position (Degrees)", () -> currState.CANCoderPosition).withWidget(BuiltInWidgets.kGraph).withProperties(Map.of("Visible Time", 10));;
 
             ShuffleboardLayout moduleCurrentState = tab.getLayout("Current Value", BuiltInLayouts.kList).withPosition(2, 3).withSize(2, 2);
             moduleCurrentState.addDouble("Steer Speed", ()-> currState.steerSpeed);
@@ -125,7 +126,7 @@ public class ShuffleboardUI extends SubsystemBase{
             runBtn.setBoolean(false);
         }
 
-        currState = swerve.getModuleState(moduleChooser.getSelected());   
+        currState = swerve.getModuleState(moduleChooser.getSelected());
     }
 
 }

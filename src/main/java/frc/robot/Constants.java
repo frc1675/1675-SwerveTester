@@ -5,10 +5,10 @@ public class Constants {
     private Constants(){}
 
     public static final double TEST_SPEED = 0.5;
-    public static final double STEER_ANGLE_TOLERANCE = 1;
+    public static final double STEER_ANGLE_TOLERANCE = 2;
 
     //TODO tune constants
-    public static final double SWERVE_P = 0.4;
+    public static final double SWERVE_P = 0.05;
     public static final double SWERVE_I = 0;
     public static final double SWERVE_D = 0.01;
 
@@ -23,7 +23,7 @@ public class Constants {
     public class ModuleTwo {
         private ModuleTwo(){}
 
-        public static final int CANCODER_ID = 11;
+        public static final int CANCODER_ID = 10;
         public static final int DRIVE_MOTOR_ID = 1;
         public static final int STEER_MOTOR_ID = 2;
     }
@@ -31,7 +31,7 @@ public class Constants {
     public class ModuleThree {
         private ModuleThree(){}
 
-        public static final int CANCODER_ID = 10;
+        public static final int CANCODER_ID = 11;
         public static final int DRIVE_MOTOR_ID = 7;
         public static final int STEER_MOTOR_ID = 8;
     }

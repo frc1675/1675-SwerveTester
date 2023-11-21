@@ -64,26 +64,16 @@ public class RealSwerveModule extends AbstractSwerveModule{
      */
     @Override
     public boolean setSteerDesiredAngle(double angleDeg) {
-        angleDeg = normalizeInput(angleDeg);
+        angleDeg = angleDeg % 360;
         double angleDif = angleDeg - cancoder.getAbsolutePosition();
 
-        if(angleDif >= Constants.STEER_ANGLE_TOLERANCE){
+        if(Math.abs(angleDif) >= Constants.STEER_ANGLE_TOLERANCE){
             steer.set(pid.calculate(angleDif));
         }else {
             steer.set(0);
             return true;
         }
         return false;
-    }
-
-    private double normalizeInput(double degrees) {
-        if(degrees > 360) {
-            return normalizeInput(degrees - 360);
-        }
-        if(degrees < 0) {
-            return normalizeInput(degrees + 360);
-        }
-        return degrees;
     }
 
     /**
