@@ -8,7 +8,7 @@ import frc.robot.subsystem.swerve.Swerve;
 public class Rotate360 extends AbstractTest {
 
   private double startAngle;
-  private boolean rotateBack = false;
+  private int step = 1;
 
   public Rotate360(Swerve swerve, Supplier<ModuleName> name) {
     super(swerve, name);
@@ -21,18 +21,13 @@ public class Rotate360 extends AbstractTest {
 
   @Override
   public void execute() {
-    if(!rotateBack) {
-      rotateBack = swerve.rotateToAngle(name, startAngle + 185);
-    }else {
-      if(swerve.rotateToAngle(name, startAngle)) {
-        this.end(false);
-      }
+    if(swerve.rotateToAngle(name, startAngle + 45 * step)) {
+      step++;
     }
-    
   }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return step == 360 / 45;
   }
 }
