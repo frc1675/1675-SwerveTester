@@ -4,13 +4,13 @@ public class Constants {
 
     private Constants(){}
 
-    public static final double TEST_SPEED = 0.5;
-    public static final double STEER_ANGLE_TOLERANCE = 2;
+    public static final double TEST_SPEED = 0.25;
+    public static final double STEER_ANGLE_TOLERANCE = 5;
+    public static final double SPEED_TOLERANCE = 0.001;
 
-    //TODO tune constants
-    public static final double SWERVE_P = 0.05;
+    public static final double SWERVE_P = 1;
     public static final double SWERVE_I = 0;
-    public static final double SWERVE_D = 0.01;
+    public static final double SWERVE_D = 0;
 
     public class ModuleOne {
         private ModuleOne(){}
