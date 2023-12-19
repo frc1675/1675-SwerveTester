@@ -15,9 +15,11 @@ public class SwerveModuleState {
     public final double CANCoderPosition;
     public final boolean isRunning;
 
+    public final double steerTarget;
+
     public final long time;
 
-    public SwerveModuleState(ModuleName name, double steerSpeed, double driveSpeed, double CANCoderPosition,
+    public SwerveModuleState(ModuleName name, double steerSpeed, double driveSpeed, double CANCoderPosition, double steerTarget,
             boolean isRunning, String CANIDString) {
         this.name = name;
         this.steerSpeed = steerSpeed;
@@ -25,6 +27,7 @@ public class SwerveModuleState {
         this.CANCoderPosition = CANCoderPosition;
         this.isRunning = isRunning;
         this.CANIDString = CANIDString;
+        this.steerTarget = steerTarget;
 
         this.time = System.currentTimeMillis();
     }

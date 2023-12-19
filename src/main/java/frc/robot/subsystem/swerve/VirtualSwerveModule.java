@@ -93,6 +93,7 @@ public class VirtualSwerveModule extends AbstractSwerveModule{
             getAverageSteerSpeed(), 
             getAverageDriveSpeed(), 
             getCanCoderAbsolutePosition(), 
+            0,
             areAnyRunning(),
             ModuleName.ALL.name
         );

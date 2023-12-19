@@ -2,10 +2,10 @@ package frc.robot.subsystem.swerve;
 
 import com.ctre.phoenix.sensors.CANCoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.SparkMaxRelativeEncoder.Type;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -26,6 +26,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
     private final SparkMaxPIDController pid;
 
     private final String toStr;
+    private double steerTarget;
 
     public RealSwerveModule(ModuleName name, int coderID, int driveID, int steerID) {
         this.name = name;
@@ -80,11 +81,13 @@ public class RealSwerveModule extends AbstractSwerveModule{
     @Override
     public boolean setSteerDesiredAngle(double angleDeg) {
         changeCoefficients();
+        angleDeg = angleDeg % 360;
+        steerTarget = angleDeg;
 
-        steerEncoder.setPosition(cancoder.getAbsolutePosition() / 360.0);
+        steerEncoder.setPosition(getCanCoderAbsolutePosition() / 360.0);
         pid.setReference((angleDeg / 360.0), ControlType.kPosition);
 
-        return withinContinousInputTolerance(angleDeg, cancoder.getAbsolutePosition());
+        return withinContinousInputTolerance(angleDeg, getCanCoderAbsolutePosition());
     }
 
     /**
@@ -106,9 +109,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
         }else {
             b += 360;
         }
-        return Math.abs(a - b) <= Constants.STEER_ANGLE_TOLERANCE;
-
-        
+        return Math.abs(a - b) <= Constants.STEER_ANGLE_TOLERANCE;        
     }
 
     /**
@@ -135,6 +136,7 @@ public class RealSwerveModule extends AbstractSwerveModule{
             steerEncoder.getVelocity(),
             driveEncoder.getVelocity(), 
             getCanCoderAbsolutePosition(), 
+            steerTarget,
             (steerEncoder.getVelocity() > Constants.SPEED_TOLERANCE) || (driveEncoder.getVelocity() > Constants.SPEED_TOLERANCE),
             toStr
         );

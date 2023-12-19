@@ -28,6 +28,6 @@ public class Rotate360 extends AbstractTest {
 
   @Override
   public boolean isFinished() {
-    return step == 360 / 45;
+    return step == (360 / 45) + 1;
   }
 }
